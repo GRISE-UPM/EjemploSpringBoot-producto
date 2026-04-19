@@ -8,7 +8,8 @@ import jakarta.persistence.Table;
 
 @Entity
 // No es necesario porque el nombre sería el de la clase,
-// pero el nombre de la tabla sería "raro"
+// pero el nombre de la tabla sería "raro" porque normalmente
+// nombramos a las tablas en plural
 @Table(name = "Productos")  
 public class Producto {
 	

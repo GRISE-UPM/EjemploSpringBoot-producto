@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -27,18 +28,18 @@ public class ProductoService {
         return new ArrayList<>(productosRepository.findAll());
     }
 
-    public Page<Producto> obtenerTodosProductos(String nombre, Pageable pageable) {
+    public Page<Producto> obtenerProductos(String nombre, Pageable pageable) {
         if (nombre != null && !nombre.trim().isEmpty()) {
             return productosRepository.findByNombreContainingIgnoreCase(nombre, pageable);
         }
-        return productosRepository.findAll(pageable);
+        return new PageImpl<>(List.of(), pageable, 0);
     }
 
     public Optional<Producto> obtenerProducto(long id) {
         return productosRepository.findById(id);
     }
 
-    public void anadirProducto(Producto producto) throws Exception {
+    public void anadirProducto(Producto producto) throws ResponseStatusException {
         if (producto.getId() != null) {
             throw new ResponseStatusException(
                 HttpStatus.BAD_REQUEST,

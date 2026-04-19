@@ -1,5 +1,3 @@
--- Usar comillas, no apostrofes
---
 -- Se está usando @GeneratedValue(strategy = GenerationType.IDENTITY)
 -- En este caso, los id no se deben incluir en el INSERT, ya que los genera la misma BD
 INSERT INTO Productos (nombre) VALUES ('Limpiaparabrisas');
@@ -7,7 +5,7 @@ INSERT INTO Productos (nombre) VALUES ('Gasolina 95');
 INSERT INTO Productos (nombre) VALUES ('Gasolina 98');
 
 -- Si no se especifica GenerationType.IDENTITY, habria que incluir los id
--- INSERT INTO Productos VALUES (1, 'Limpiaparabrisas');
+-- INSERT INTO productos VALUES (1, 'Limpiaparabrisas');
 
 -- Pero esto genera un problema: en este caso, Hibernate utiliza una estrategia
 -- automática (AUTO), gestionando internamente la generación de identificadores.
